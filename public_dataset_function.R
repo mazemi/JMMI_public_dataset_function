@@ -1,5 +1,5 @@
 ##################################################
-# this function generate public data set for JMMI.
+# This function generates public data set for JMMI.
 # input parameters: session and tool path
 # other required data:
 # median data, clean data, datamerge
