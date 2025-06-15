@@ -1,5 +1,5 @@
 ##################################################
-# This function generates public data set for JMMI.
+# this function generate public data set for JMMI.
 # input parameters: session and tool path
 # other required data:
 # median data, clean data, datamerge
@@ -10,6 +10,11 @@
 ##################################################
 
 generate_public_data <- function(session, tool_path){
+  
+  # just for test
+  # tool_path <- "input/questionnaire/JMMI_Tool_v8.xlsx"
+  # session <-"JMMI_R60_Jun25"
+  
   wb <- loadWorkbook("./public_dataset/misc_data/public_dt_template.xlsx")
   
   YEAR <- paste0("20",str_extract(session, "\\d+$"))
@@ -25,6 +30,10 @@ generate_public_data <- function(session, tool_path){
   # input data
   clean_df_path <- list.files(path = "./input/data/", pattern = ".xlsx$", full.names = TRUE)
   clean_df <- read.xlsx(clean_df_path[1]) 
+  
+  # date_period <- clean_df$date
+  date_period <- as.Date(clean_df$date, origin = "1899-12-30")
+  
   data_count <- nrow(clean_df)
   dict_count <- length(unique(clean_df$afg_dist))
   prov_count <- length(unique(clean_df$afg_prov))
@@ -37,7 +46,7 @@ generate_public_data <- function(session, tool_path){
   meb_df <- read.xlsx(file_path[1], sheet = 3)  
   
   # load datamerge
-  dm_file_path <- list.files("./datamerge/", pattern = "\\.csv$", full.names = TRUE)[1]
+  dm_file_path <- list.files("./results/", pattern = "^datamerge.*\\.csv$", full.names = TRUE)[1]
   dm <- read.csv(dm_file_path)
   
   cols_to_select <- c(
@@ -57,6 +66,16 @@ generate_public_data <- function(session, tool_path){
   )
   
   ## add readme info
+  # Append month and year in the Readme title
+  title1 <- "AFGHANISTAN | REACH Initiative and Cash and Voucher Working Group (CVWG)"
+  title2 <- "Joint Market Monitoring Initiative (JMMI)"
+  title3 <- "DATASET"
+  data_collection_period <- paste0(MONTH, " ", YEAR, ", (round ", ROUND , ")")
+  new_title <- paste(c(title1, title2, title3, data_collection_period), collapse = "\n")
+  
+  min_date <- min(date_period, na.rm = TRUE)
+  max_date <- max(date_period, na.rm = TRUE)
+  
   choice_sheet_prov <- choice_sheet %>% 
     filter(list_name =="province_list") %>% 
     select(-list_name, province_name = `label::English`)
@@ -108,7 +127,7 @@ generate_public_data <- function(session, tool_path){
   
   merge_sizes <- sapply(matched_cols_list, length)
   merge_sizes <- merge_sizes[-(1:3)]
-  merge_sizes <- c(3, merge_sizes)
+  merge_sizes <- c(4, merge_sizes)
   
   merge_labels <- c(
     "disaggregation",
@@ -124,26 +143,42 @@ generate_public_data <- function(session, tool_path){
     "Payment modalities accepted by the traders"
   )
   
-  ##  add regional level indicators
-  reg_dm <- dm %>% filter(level=="afg_region")
+  ## regional level indicators
+  region_admin <- lookup_admin %>% select(region_code, region_name)
+  region_admin <- unique(region_admin)
+  reg_dm <- dm %>% filter(level %in% c("No_disagregation","afg_region"))
+  reg_dm <- reg_dm %>% left_join(region_admin, by= c("disaggregation" = "region_code"))
+  reg_dm <- reg_dm %>% select(level, region_name, region_code = disaggregation, everything())
+  reg_dm[1, "level"] <- "Afghanistal"
+  reg_dm[1, "region_code"] <- NA
   
-  ##  add provincial level indicators
+  ## provincial level indicators
+  province_admin <- lookup_admin %>% select(province_code, province_name)
+  province_admin <- unique(province_admin)
   prov_dm <- dm %>% filter(level=="afg_prov")
+  prov_dm <- prov_dm %>% left_join(province_admin, by= c("disaggregation" = "province_code"))
+  prov_dm <- prov_dm %>% select(level, province_name, province_code = disaggregation, everything())
   
-  ##  add district level indicators
+  ## district level indicators
+  disct_admin <- lookup_admin %>% select(district_code, district_name)
+  disct_admin <- unique(disct_admin)
   dist_dm <- dm %>% filter(level=="afg_dist")
+  dist_dm <- dist_dm %>% left_join(disct_admin, by= c("disaggregation" = "district_code"))
+  dist_dm <- dist_dm %>% select(level, district_name, district_code = disaggregation, everything())
   
-  ##  added survey sheet of the kobo tool
+  ## survey sheet of the kobo tool
   questions <- read.xlsx(tool_path, sheet = "survey")
   questions <- questions %>% select(type, name, `label::English`, `label::Dari`, `label::Pashtu`)
   
-  ## generate public data set 
-  writeData(wb, sheet = "README", x = data_count, startCol = 2, startRow = 13)
-  writeData(wb, sheet = "README", x = provinces_str , startCol = 2, startRow = 14)
-  writeData(wb, sheet = "README", x = partners_str, startCol = 2, startRow = 15)
+  # writing data to the excel workbook
+  writeData(wb, sheet = "README", x = new_title, startRow = 1, startCol = 1)
+  writeData(wb, sheet = "README", x = (paste0(min_date, " to ", max_date)),, startCol = 2, startRow = 13)
+  writeData(wb, sheet = "README", x = data_count, startCol = 2, startRow = 14)
+  writeData(wb, sheet = "README", x = provinces_str , startCol = 2, startRow = 15)
+  writeData(wb, sheet = "README", x = partners_str, startCol = 2, startRow = 16)
   
-  addWorksheet(wb, "Price in AFN - District")
-  writeData(wb, sheet = "Price in AFN - District", x = dist1)
+  addWorksheet(wb, "MEB-FB & Price in AFN- District")
+  writeData(wb, sheet = "MEB-FB & Price in AFN- District", x = dist1)
   
   addWorksheet(wb, "MEB & Food basket - Province")
   writeData(wb, sheet = "MEB & Food basket - Province", x = prov1)
@@ -189,14 +224,14 @@ generate_public_data <- function(session, tool_path){
   vertical_style <- createStyle(
     border = "Right",              
     borderColour = "#403f3e",      
-    borderStyle = "thick"              
+    borderStyle = "medium"              
   )
   
   # Style: bottom line border
   bottomline_style <- createStyle(
     border = "Bottom",              
     borderColour = "#403f3e",      
-    borderStyle = "thick"              
+    borderStyle = "medium"              
   )
   
   # Style: first row simple
@@ -221,16 +256,19 @@ generate_public_data <- function(session, tool_path){
   # Style: add percentage
   percentStyle <- createStyle(numFmt = '0"%"')  
   
-  # apply styles
-  addStyle(wb, "Price in AFN - District", style = border_style, rows = 1:(nrow(dist1) + 1), cols = 1:ncol(dist1), gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Price in AFN - District", style = header_style_simple, rows = 1, cols = 1:ncol(dist1), gridExpand = TRUE)
-  addStyle(wb, "Price in AFN - District", style = vertical_style, rows = 1:(nrow(dist1) + 1), cols = 4, gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Price in AFN - District", style = vertical_style, rows = 1:(nrow(dist1) + 1), cols = 6, gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Price in AFN - District", style = vertical_style, rows = 1:(nrow(dist1) + 1), cols = ncol(dist1), gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Price in AFN - District", style = bottomline_style, rows = (nrow(dist1) + 1), cols = 1:ncol(dist1), gridExpand = TRUE, stack = TRUE)
+  dd <- "MEB-FB & Price in AFN- District"
+  str_length(dd)
   
-  setColWidths(wb, "Price in AFN - District", cols = 1:ncol(dist1), widths = 16)
-  setColWidths(wb, "Price in AFN - District", cols = 3, widths = 25)
+  # apply styles
+  addStyle(wb, "MEB-FB & Price in AFN- District", style = border_style, rows = 1:(nrow(dist1) + 1), cols = 1:ncol(dist1), gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "MEB-FB & Price in AFN- District", style = header_style_simple, rows = 1, cols = 1:ncol(dist1), gridExpand = TRUE)
+  addStyle(wb, "MEB-FB & Price in AFN- District", style = vertical_style, rows = 1:(nrow(dist1) + 1), cols = 4, gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "MEB-FB & Price in AFN- District", style = vertical_style, rows = 1:(nrow(dist1) + 1), cols = 6, gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "MEB-FB & Price in AFN- District", style = vertical_style, rows = 1:(nrow(dist1) + 1), cols = ncol(dist1), gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "MEB-FB & Price in AFN- District", style = bottomline_style, rows = (nrow(dist1) + 1), cols = 1:ncol(dist1), gridExpand = TRUE, stack = TRUE)
+  
+  setColWidths(wb, "MEB-FB & Price in AFN- District", cols = 1:ncol(dist1), widths = 16)
+  setColWidths(wb, "MEB-FB & Price in AFN- District", cols = 3, widths = 25)
   
   addStyle(wb, "MEB & Food basket - Province", style = border_style, rows = 1:(nrow(prov1) + 1), cols = 1:ncol(prov1), gridExpand = TRUE, stack = TRUE)
   addStyle(wb, "MEB & Food basket - Province", style = header_style_simple, rows = 1, cols = 1:ncol(prov1), gridExpand = TRUE)
@@ -238,51 +276,51 @@ generate_public_data <- function(session, tool_path){
   addStyle(wb, "MEB & Food basket - Province", style = bottomline_style, rows = (nrow(prov1) + 1), cols = 1:ncol(prov1), gridExpand = TRUE, stack = TRUE)
   setColWidths(wb, "MEB & Food basket - Province", cols = 1:5, widths = 17)
   
-  addStyle(wb, "Data analysis - Region", style = border_style, rows = 1:(nrow(reg_dm) + 2), cols = 1:ncol(reg_dm), gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Data analysis - Region", style = header_style, rows = 1, cols = 1:ncol(reg_dm), gridExpand = TRUE)
-  addStyle(wb, "Data analysis - Region", style = second_row_style, rows = 2, cols = 1:ncol(reg_dm), gridExpand = TRUE)
-  addStyle(wb, "Data analysis - Region", style = vertical_style, rows = 1:(nrow(reg_dm) + 2), cols = 3, gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Data analysis - Region", style = vertical_style, rows = 1:(nrow(reg_dm) + 2), cols = ncol(reg_dm), gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Data analysis - Region", style = bottomline_style, rows = (nrow(reg_dm) + 2), cols = 1:ncol(reg_dm), gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, sheet = "Data analysis - Region", style = percentStyle, rows = 3:(nrow(reg_dm) + 2), cols = 4:ncol(reg_dm), gridExpand = TRUE, stack = TRUE)
-  
-  setRowHeights(wb, "Data analysis - Region", rows = 1, heights = 30)
-  setColWidths(wb, "Data analysis - Region", cols = 1, widths = 15)
-  setColWidths(wb, "Data analysis - Region", cols = 2, widths = 25)
-  setColWidths(wb, "Data analysis - Region", cols = 3, widths = 14)
-  
-  addStyle(wb, "Data analysis - Province", style = border_style, rows = 1:(nrow(prov_dm) + 2), cols = 1:ncol(prov_dm), gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Data analysis - Province", style = header_style, rows = 1, cols = 1:ncol(prov_dm), gridExpand = TRUE)
-  addStyle(wb, "Data analysis - Province", style = second_row_style, rows = 2, cols = 1:ncol(prov_dm), gridExpand = TRUE)
-  addStyle(wb, "Data analysis - Province", style = vertical_style, rows = 1:(nrow(prov_dm) + 2), cols = 3, gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Data analysis - Province", style = vertical_style, rows = 1:(nrow(prov_dm) + 2), cols = ncol(prov_dm), gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, "Data analysis - Province", style = bottomline_style, rows = (nrow(prov_dm) + 2), cols = 1:ncol(prov_dm), gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, sheet = "Data analysis - Province", style = percentStyle, rows = 3:(nrow(prov_dm) + 2), cols = 4:ncol(prov_dm), gridExpand = TRUE, stack = TRUE)
-  
-  setRowHeights(wb, "Data analysis - Province", rows = 1, heights = 30)
-  setColWidths(wb, "Data analysis - Province", cols = 1, widths = 15)
-  setColWidths(wb, "Data analysis - Province", cols = 2, widths = 25)
-  setColWidths(wb, "Data analysis - Province", cols = 3, widths = 14)
-  
   addStyle(wb, "Data analysis - District", style = border_style, rows = 1:(nrow(dist_dm) + 2), cols = 1:ncol(dist_dm), gridExpand = TRUE, stack = TRUE)
   addStyle(wb, "Data analysis - District", style = header_style, rows = 1, cols = 1:ncol(dist_dm), gridExpand = TRUE)
   addStyle(wb, "Data analysis - District", style = second_row_style, rows = 2, cols = 1:ncol(dist_dm), gridExpand = TRUE)
-  addStyle(wb, "Data analysis - District", style = vertical_style, rows = 1:(nrow(dist_dm) + 2), cols = 3, gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "Data analysis - District", style = vertical_style, rows = 1:(nrow(dist_dm) + 2), cols = 4, gridExpand = TRUE, stack = TRUE)
   addStyle(wb, "Data analysis - District", style = vertical_style, rows = 1:(nrow(dist_dm) + 2), cols = ncol(dist_dm), gridExpand = TRUE, stack = TRUE)
   addStyle(wb, "Data analysis - District", style = bottomline_style, rows = (nrow(dist_dm) + 2), cols = 1:ncol(dist_dm), gridExpand = TRUE, stack = TRUE)
-  addStyle(wb, sheet = "Data analysis - District", style = percentStyle, rows = 3:(nrow(dist_dm) + 2), cols = 4:ncol(dist_dm), gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, sheet = "Data analysis - District", style = percentStyle, rows = 3:(nrow(dist_dm) + 2), cols = 5:ncol(dist_dm), gridExpand = TRUE, stack = TRUE)
   
   setRowHeights(wb, "Data analysis - District", rows = 1, heights = 30)
   setColWidths(wb, "Data analysis - District", cols = 1, widths = 15)
   setColWidths(wb, "Data analysis - District", cols = 2, widths = 25)
   setColWidths(wb, "Data analysis - District", cols = 3, widths = 14)
   
+  addStyle(wb, "Data analysis - Province", style = border_style, rows = 1:(nrow(prov_dm) + 2), cols = 1:ncol(prov_dm), gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "Data analysis - Province", style = header_style, rows = 1, cols = 1:ncol(prov_dm), gridExpand = TRUE)
+  addStyle(wb, "Data analysis - Province", style = second_row_style, rows = 2, cols = 1:ncol(prov_dm), gridExpand = TRUE)
+  addStyle(wb, "Data analysis - Province", style = vertical_style, rows = 1:(nrow(prov_dm) + 2), cols = 4, gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "Data analysis - Province", style = vertical_style, rows = 1:(nrow(prov_dm) + 2), cols = ncol(prov_dm), gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "Data analysis - Province", style = bottomline_style, rows = (nrow(prov_dm) + 2), cols = 1:ncol(prov_dm), gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, sheet = "Data analysis - Province", style = percentStyle, rows = 3:(nrow(prov_dm) + 2), cols = 5:ncol(prov_dm), gridExpand = TRUE, stack = TRUE)
+  
+  setRowHeights(wb, "Data analysis - Province", rows = 1, heights = 30)
+  setColWidths(wb, "Data analysis - Province", cols = 1, widths = 15)
+  setColWidths(wb, "Data analysis - Province", cols = 2, widths = 25)
+  setColWidths(wb, "Data analysis - Province", cols = 3, widths = 14)
+  
+  addStyle(wb, "Data analysis - Region", style = border_style, rows = 1:(nrow(reg_dm) + 2), cols = 1:ncol(reg_dm), gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "Data analysis - Region", style = header_style, rows = 1, cols = 1:ncol(reg_dm), gridExpand = TRUE)
+  addStyle(wb, "Data analysis - Region", style = second_row_style, rows = 2, cols = 1:ncol(reg_dm), gridExpand = TRUE)
+  addStyle(wb, "Data analysis - Region", style = vertical_style, rows = 1:(nrow(reg_dm) + 2), cols = 4, gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "Data analysis - Region", style = vertical_style, rows = 1:(nrow(reg_dm) + 2), cols = ncol(reg_dm), gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, "Data analysis - Region", style = bottomline_style, rows = (nrow(reg_dm) + 2), cols = 1:ncol(reg_dm), gridExpand = TRUE, stack = TRUE)
+  addStyle(wb, sheet = "Data analysis - Region", style = percentStyle, rows = 3:(nrow(reg_dm) + 2), cols = 5:ncol(reg_dm), gridExpand = TRUE, stack = TRUE)
+  
+  setRowHeights(wb, "Data analysis - Region", rows = 1, heights = 30)
+  setColWidths(wb, "Data analysis - Region", cols = 1, widths = 15)
+  setColWidths(wb, "Data analysis - Region", cols = 2, widths = 25)
+  setColWidths(wb, "Data analysis - Region", cols = 3, widths = 14)
+  
   addStyle(wb, "survey", style = border_style, rows = 1:(nrow(questions) + 1), cols = 1:ncol(questions), gridExpand = TRUE, stack = TRUE)
   addStyle(wb, "survey", style = header_style_simple, rows = 1, cols = 1:ncol(questions), gridExpand = TRUE)
   setColWidths(wb, "survey", cols = 1:2, widths = 30)
   setColWidths(wb, "survey", cols = 3:5, widths = 40)
   
-  saveWorkbook(wb, file = paste0("./public_dataset/output_data/DRAFT_REACH_AFG_CVWG_JMMI_Dataset", MONTH, YEAR, ".xlsx"), overwrite = TRUE)
+  saveWorkbook(wb, file = paste0("./public_dataset/output_data/REACH_AFG_CVWG_JMMI_Dataset_", MONTH, YEAR, ".xlsx"), overwrite = TRUE)
   cat("Public dataset has ben generated.")
 }
 
