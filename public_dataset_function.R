@@ -45,6 +45,18 @@ generate_public_data <- function(session, tool_path){
   median_df <- read.xlsx(file_path[1], sheet = 1) 
   meb_df <- read.xlsx(file_path[1], sheet = 3)  
   
+  ## helper look up function for getting admin labels
+  exact_lookup <- function(df, lookup_admin, key_col_df, key_col_lookup, value_col_lookup) {
+    sapply(df[[key_col_df]], function(key) {
+      match_row <- which(lookup_admin[[key_col_lookup]] == key)
+      if (length(match_row) > 0) {
+        return(lookup_admin[[value_col_lookup]][match_row[1]])
+      } else {
+        return(NA)
+      }
+    })
+  }
+  
   # load datamerge
   dm_file_path <- list.files("./results/", pattern = "^datamerge.*\\.csv$", full.names = TRUE)[1]
   dm <- read.csv(dm_file_path)
@@ -70,8 +82,9 @@ generate_public_data <- function(session, tool_path){
   title1 <- "AFGHANISTAN | REACH Initiative and Cash and Voucher Working Group (CVWG)"
   title2 <- "Joint Market Monitoring Initiative (JMMI)"
   title3 <- "DATASET"
-  data_collection_period <- paste0(MONTH, " ", YEAR, ", (round ", ROUND , ")")
-  new_title <- paste(c(title1, title2, title3, data_collection_period), collapse = "\n")
+  data_collection_month <- paste0(MONTH, " ", YEAR)
+  data_collection_period <- paste0("(round ", ROUND , ")")
+  new_title <- paste(c(title1, title2, title3, data_collection_month), collapse = "\n")
   
   min_date <- min(date_period, na.rm = TRUE)
   max_date <- max(date_period, na.rm = TRUE)
@@ -100,6 +113,7 @@ generate_public_data <- function(session, tool_path){
   partners_str <- paste(partners, collapse = ", ")
   partners_str <- paste0("The JMMI data collection was conducted by ", partners_count, 
                          " organizations and agencies: ",partners_str)
+  
   
   ##  add district level MEB and price
   dist1 <- median_df %>% filter(level == "district") %>% select(-c(period, level))
@@ -151,6 +165,7 @@ generate_public_data <- function(session, tool_path){
   reg_dm <- reg_dm %>% select(level, region_name, region_code = disaggregation, everything())
   reg_dm[1, "level"] <- "Afghanistal"
   reg_dm[1, "region_code"] <- NA
+  reg_dm$level[reg_dm$level == "afg_region"] <- "Region"
   
   ## provincial level indicators
   province_admin <- lookup_admin %>% select(province_code, province_name)
@@ -159,6 +174,9 @@ generate_public_data <- function(session, tool_path){
   prov_dm <- prov_dm %>% left_join(province_admin, by= c("disaggregation" = "province_code"))
   prov_dm <- prov_dm %>% select(level, province_name, province_code = disaggregation, everything())
   
+  prov_dm$level <- exact_lookup(prov_dm, lookup_admin, "province_code", "province_code", "region_name")
+  prov_dm <- dplyr::rename(prov_dm, region = level)
+  
   ## district level indicators
   disct_admin <- lookup_admin %>% select(district_code, district_name)
   disct_admin <- unique(disct_admin)
@@ -166,13 +184,16 @@ generate_public_data <- function(session, tool_path){
   dist_dm <- dist_dm %>% left_join(disct_admin, by= c("disaggregation" = "district_code"))
   dist_dm <- dist_dm %>% select(level, district_name, district_code = disaggregation, everything())
   
+  dist_dm$level <- exact_lookup(dist_dm, lookup_admin, "district_code", "district_code", "province_name")
+  dist_dm <- dplyr::rename(dist_dm, province = level)
+  
   ## survey sheet of the kobo tool
   questions <- read.xlsx(tool_path, sheet = "survey")
   questions <- questions %>% select(type, name, `label::English`, `label::Dari`, `label::Pashtu`)
   
   # writing data to the excel workbook
   writeData(wb, sheet = "README", x = new_title, startRow = 1, startCol = 1)
-  writeData(wb, sheet = "README", x = (paste0(min_date, " to ", max_date)),, startCol = 2, startRow = 13)
+  writeData(wb, sheet = "README", x = (paste0(min_date, " to ", max_date, " ", data_collection_period)),, startCol = 2, startRow = 13)
   writeData(wb, sheet = "README", x = data_count, startCol = 2, startRow = 14)
   writeData(wb, sheet = "README", x = provinces_str , startCol = 2, startRow = 15)
   writeData(wb, sheet = "README", x = partners_str, startCol = 2, startRow = 16)
@@ -285,7 +306,7 @@ generate_public_data <- function(session, tool_path){
   addStyle(wb, sheet = "Data analysis - District", style = percentStyle, rows = 3:(nrow(dist_dm) + 2), cols = 5:ncol(dist_dm), gridExpand = TRUE, stack = TRUE)
   
   setRowHeights(wb, "Data analysis - District", rows = 1, heights = 30)
-  setColWidths(wb, "Data analysis - District", cols = 1, widths = 15)
+  setColWidths(wb, "Data analysis - District", cols = 1, widths = 20)
   setColWidths(wb, "Data analysis - District", cols = 2, widths = 25)
   setColWidths(wb, "Data analysis - District", cols = 3, widths = 14)
   
@@ -298,7 +319,7 @@ generate_public_data <- function(session, tool_path){
   addStyle(wb, sheet = "Data analysis - Province", style = percentStyle, rows = 3:(nrow(prov_dm) + 2), cols = 5:ncol(prov_dm), gridExpand = TRUE, stack = TRUE)
   
   setRowHeights(wb, "Data analysis - Province", rows = 1, heights = 30)
-  setColWidths(wb, "Data analysis - Province", cols = 1, widths = 15)
+  setColWidths(wb, "Data analysis - Province", cols = 1, widths = 20)
   setColWidths(wb, "Data analysis - Province", cols = 2, widths = 25)
   setColWidths(wb, "Data analysis - Province", cols = 3, widths = 14)
   
@@ -311,7 +332,7 @@ generate_public_data <- function(session, tool_path){
   addStyle(wb, sheet = "Data analysis - Region", style = percentStyle, rows = 3:(nrow(reg_dm) + 2), cols = 5:ncol(reg_dm), gridExpand = TRUE, stack = TRUE)
   
   setRowHeights(wb, "Data analysis - Region", rows = 1, heights = 30)
-  setColWidths(wb, "Data analysis - Region", cols = 1, widths = 15)
+  setColWidths(wb, "Data analysis - Region", cols = 1, widths = 20)
   setColWidths(wb, "Data analysis - Region", cols = 2, widths = 25)
   setColWidths(wb, "Data analysis - Region", cols = 3, widths = 14)
   
