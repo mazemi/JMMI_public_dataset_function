@@ -5,15 +5,9 @@
 # median data, clean data, datamerge
 # and admin codes and labels
 # 
-# version: 1.0
-# date: 12 May 2025
 ##################################################
 
 generate_public_data <- function(session, tool_path){
-  
-  # just for test
-  # tool_path <- "input/questionnaire/JMMI_Tool_v8.xlsx"
-  # session <-"JMMI_R60_Jun25"
   
   wb <- loadWorkbook("./public_dataset/misc_data/public_dt_template.xlsx")
   
@@ -83,11 +77,12 @@ generate_public_data <- function(session, tool_path){
   title2 <- "Joint Market Monitoring Initiative (JMMI)"
   title3 <- "DATASET"
   data_collection_month <- paste0(MONTH, " ", YEAR)
-  data_collection_period <- paste0("(round ", ROUND , ")")
-  new_title <- paste(c(title1, title2, title3, data_collection_month), collapse = "\n")
+  new_title <- paste(c(title1, title2, data_collection_month, title3), collapse = "\n")
   
   min_date <- min(date_period, na.rm = TRUE)
   max_date <- max(date_period, na.rm = TRUE)
+  
+  data_collection_period <- paste0("The round ", ROUND, " of data collection was conducted between ", min_date, " to ", max_date)
   
   choice_sheet_prov <- choice_sheet %>% 
     filter(list_name =="province_list") %>% 
@@ -161,39 +156,39 @@ generate_public_data <- function(session, tool_path){
   region_admin <- lookup_admin %>% select(region_code, region_name)
   region_admin <- unique(region_admin)
   reg_dm <- dm %>% filter(level %in% c("No_disagregation","afg_region"))
-  reg_dm <- reg_dm %>% left_join(region_admin, by= c("disaggregation" = "region_code"))
-  reg_dm <- reg_dm %>% select(level, region_name, region_code = disaggregation, everything())
+  reg_dm <- reg_dm %>% left_join(region_admin, by= c("disaggregation" = "region_name"))
+  reg_dm <- reg_dm %>% select(level, region_name = disaggregation, region_code, everything())
   reg_dm[1, "level"] <- "Afghanistal"
   reg_dm[1, "region_code"] <- NA
   reg_dm$level[reg_dm$level == "afg_region"] <- "Region"
-  
+    
   ## provincial level indicators
   province_admin <- lookup_admin %>% select(province_code, province_name)
   province_admin <- unique(province_admin)
   prov_dm <- dm %>% filter(level=="afg_prov")
-  prov_dm <- prov_dm %>% left_join(province_admin, by= c("disaggregation" = "province_code"))
-  prov_dm <- prov_dm %>% select(level, province_name, province_code = disaggregation, everything())
-  
+  prov_dm <- prov_dm %>% left_join(province_admin, by= c("disaggregation" = "province_name"))
+  prov_dm <- prov_dm %>% select(level, province_name = disaggregation, province_code, everything())
   prov_dm$level <- exact_lookup(prov_dm, lookup_admin, "province_code", "province_code", "region_name")
   prov_dm <- dplyr::rename(prov_dm, region = level)
+  prov_dm <- prov_dm %>% arrange(province_code)
   
   ## district level indicators
   disct_admin <- lookup_admin %>% select(district_code, district_name)
   disct_admin <- unique(disct_admin)
   dist_dm <- dm %>% filter(level=="afg_dist")
-  dist_dm <- dist_dm %>% left_join(disct_admin, by= c("disaggregation" = "district_code"))
-  dist_dm <- dist_dm %>% select(level, district_name, district_code = disaggregation, everything())
-  
+  dist_dm <- dist_dm %>% left_join(disct_admin, by= c("disaggregation" = "district_name"))
+  dist_dm <- dist_dm %>% select(level, district_name = disaggregation, district_code, everything())
   dist_dm$level <- exact_lookup(dist_dm, lookup_admin, "district_code", "district_code", "province_name")
   dist_dm <- dplyr::rename(dist_dm, province = level)
-  
+  dist_dm <- dist_dm %>% arrange(district_code)
+    
   ## survey sheet of the kobo tool
   questions <- read.xlsx(tool_path, sheet = "survey")
   questions <- questions %>% select(type, name, `label::English`, `label::Dari`, `label::Pashtu`)
   
   # writing data to the excel workbook
   writeData(wb, sheet = "README", x = new_title, startRow = 1, startCol = 1)
-  writeData(wb, sheet = "README", x = (paste0(min_date, " to ", max_date, " ", data_collection_period)),, startCol = 2, startRow = 13)
+  writeData(wb, sheet = "README", x = data_collection_period, startCol = 2, startRow = 13)
   writeData(wb, sheet = "README", x = data_count, startCol = 2, startRow = 14)
   writeData(wb, sheet = "README", x = provinces_str , startCol = 2, startRow = 15)
   writeData(wb, sheet = "README", x = partners_str, startCol = 2, startRow = 16)

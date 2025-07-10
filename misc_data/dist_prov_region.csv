@@ -1,0 +1,420 @@
+﻿region_code,region_name,province_code,province_name,district_code,district_name
+CR,Capital,AF01,Kabul,AF0101,Kabul
+CR,Capital,AF01,Kabul,AF0102,Paghman
+CR,Capital,AF01,Kabul,AF0103,Chahar Asyab
+CR,Capital,AF01,Kabul,AF0104,Bagrami
+CR,Capital,AF01,Kabul,AF0105,Deh Sabz
+CR,Capital,AF01,Kabul,AF0106,Shakar Dara
+CR,Capital,AF01,Kabul,AF0107,Musahi
+CR,Capital,AF01,Kabul,AF0108,Mir Bacha Kot
+CR,Capital,AF01,Kabul,AF0109,Khak-e-Jabbar
+CR,Capital,AF01,Kabul,AF0110,Kalakan
+CR,Capital,AF01,Kabul,AF0111,Guldara
+CR,Capital,AF01,Kabul,AF0112,Farza
+CR,Capital,AF01,Kabul,AF0113,Estalef
+CR,Capital,AF01,Kabul,AF0114,Qarabagh (Kabul)
+CR,Capital,AF01,Kabul,AF0115,Surobi (Kabul)
+CR,Capital,AF02,Kapisa,AF0201,Mahmood-e-Raqi
+CR,Capital,AF02,Kapisa,AF0202,Hisa-e-Duwum Kohistan
+CR,Capital,AF02,Kapisa,AF0203,Koh Band
+CR,Capital,AF02,Kapisa,AF0204,Hisa-e-Awal Kohistan
+CR,Capital,AF02,Kapisa,AF0205,Nijrab
+CR,Capital,AF02,Kapisa,AF0206,Tagab (Kapisa)
+CR,Capital,AF02,Kapisa,AF0207,Alasay
+CR,Capital,AF03,Parwan,AF0301,Charikar
+CR,Capital,AF03,Parwan,AF0302,Bagram
+CR,Capital,AF03,Parwan,AF0303,Shinwari
+CR,Capital,AF03,Parwan,AF0304,Sayed Khel
+CR,Capital,AF03,Parwan,AF0305,Jabal Saraj
+CR,Capital,AF03,Parwan,AF0306,Salang
+CR,Capital,AF03,Parwan,AF0307,Ghorband
+CR,Capital,AF03,Parwan,AF0308,Koh-e-Safi
+CR,Capital,AF03,Parwan,AF0309,Surkh-e-Parsa
+CR,Capital,AF03,Parwan,AF0310,Shekh Ali
+CR,Capital,AF04,Maidan Wardak,AF0401,Maydan Shahr
+CR,Capital,AF04,Maidan Wardak,AF0402,Nerkh
+CR,Capital,AF04,Maidan Wardak,AF0403,Jalrez
+CR,Capital,AF04,Maidan Wardak,AF0404,Chak-e-Wardak
+CR,Capital,AF04,Maidan Wardak,AF0405,Saydabad
+CR,Capital,AF04,Maidan Wardak,AF0406,Daymirdad
+CR,Capital,AF04,Maidan Wardak,AF0407,Hesa-e-Awal Behsud
+CR,Capital,AF04,Maidan Wardak,AF0408,Jaghatu (Wardak)
+CR,Capital,AF04,Maidan Wardak,AF0409,Markaz-e-Behsud
+CR,Capital,AF05,Logar,AF0501,Pul-e-Alam
+CR,Capital,AF05,Logar,AF0502,Baraki Barak
+CR,Capital,AF05,Logar,AF0503,Charkh
+CR,Capital,AF05,Logar,AF0504,Khoshi
+CR,Capital,AF05,Logar,AF0505,Mohammad Agha
+CR,Capital,AF05,Logar,AF0506,Kharwar
+CR,Capital,AF05,Logar,AF0507,Azra
+ER,Eastern,AF06,Nangarhar,AF0601,Jalalabad
+ER,Eastern,AF06,Nangarhar,AF0602,Behsud
+ER,Eastern,AF06,Nangarhar,AF0603,Surkh Rod
+ER,Eastern,AF06,Nangarhar,AF0604,Chaparhar
+ER,Eastern,AF06,Nangarhar,AF0605,Kama
+ER,Eastern,AF06,Nangarhar,AF0606,Kuz Kunar
+ER,Eastern,AF06,Nangarhar,AF0607,Rodat
+ER,Eastern,AF06,Nangarhar,AF0608,Khogyani
+ER,Eastern,AF06,Nangarhar,AF0609,Bati Kot
+ER,Eastern,AF06,Nangarhar,AF0610,Deh Bala
+ER,Eastern,AF06,Nangarhar,AF0611,Pachir Wa Agam
+ER,Eastern,AF06,Nangarhar,AF0612,Dara-e-Nur
+ER,Eastern,AF06,Nangarhar,AF0613,Kot
+ER,Eastern,AF06,Nangarhar,AF0614,Goshta
+ER,Eastern,AF06,Nangarhar,AF0615,Achin
+ER,Eastern,AF06,Nangarhar,AF0616,Shinwar
+ER,Eastern,AF06,Nangarhar,AF0617,Muhmand Dara
+ER,Eastern,AF06,Nangarhar,AF0618,Lalpoor
+ER,Eastern,AF06,Nangarhar,AF0619,Sherzad
+ER,Eastern,AF06,Nangarhar,AF0620,Nazyan
+ER,Eastern,AF06,Nangarhar,AF0621,Hesarak
+ER,Eastern,AF06,Nangarhar,AF0622,Dur Baba
+ER,Eastern,AF07,Laghman,AF0701,Mehtarlam
+ER,Eastern,AF07,Laghman,AF0702,Qarghayee
+ER,Eastern,AF07,Laghman,AF0703,Alishang
+ER,Eastern,AF07,Laghman,AF0704,Alingar
+ER,Eastern,AF07,Laghman,AF0705,Dawlatshah
+ER,Eastern,AF07,Laghman,AF0706,Bad Pakh
+CR,Capital,AF08,Panjsher,AF0801,Bazarak
+CR,Capital,AF08,Panjsher,AF0802,Rukha
+CR,Capital,AF08,Panjsher,AF0803,Dara
+CR,Capital,AF08,Panjsher,AF0804,Khenj
+CR,Capital,AF08,Panjsher,AF0805,Onaba
+CR,Capital,AF08,Panjsher,AF0806,Shutul
+CR,Capital,AF08,Panjsher,AF0807,Paryan
+CR,Capital,AF08,Panjsher,AF0808,Ab Shar
+NE,North Eastern,AF09,Baghlan,AF0901,Pul-e-Khumri
+NE,North Eastern,AF09,Baghlan,AF0902,Dahana-e-Ghori
+NE,North Eastern,AF09,Baghlan,AF0903,Doshi
+NE,North Eastern,AF09,Baghlan,AF0904,Nahrin
+NE,North Eastern,AF09,Baghlan,AF0905,Baghlan-e-Jadid
+NE,North Eastern,AF09,Baghlan,AF0906,Khinjan
+NE,North Eastern,AF09,Baghlan,AF0907,Andarab
+NE,North Eastern,AF09,Baghlan,AF0908,Deh Salah
+NE,North Eastern,AF09,Baghlan,AF0909,Khwaja Hejran
+NE,North Eastern,AF09,Baghlan,AF0910,Burka
+NE,North Eastern,AF09,Baghlan,AF0911,Tala Wa Barfak
+NE,North Eastern,AF09,Baghlan,AF0912,Pul-e-Hisar
+NE,North Eastern,AF09,Baghlan,AF0913,Khost Wa Fereng
+NE,North Eastern,AF09,Baghlan,AF0914,Guzargah-e-Noor
+NE,North Eastern,AF09,Baghlan,AF0915,Fereng Wa Gharu
+CH,Central Highland,AF10,Bamyan,AF1001,Bamyan
+CH,Central Highland,AF10,Bamyan,AF1002,Shibar
+CH,Central Highland,AF10,Bamyan,AF1003,Sayghan
+CH,Central Highland,AF10,Bamyan,AF1004,Kahmard
+CH,Central Highland,AF10,Bamyan,AF1005,Yakawlang
+CH,Central Highland,AF10,Bamyan,AF1006,Panjab
+CH,Central Highland,AF10,Bamyan,AF1007,Waras
+CH,Central Highland,AF10,Bamyan,AF1008,Yakawlang No 2
+SE,South Eastern,AF11,Ghazni,AF1101,Ghazni
+SE,South Eastern,AF11,Ghazni,AF1102,Wali Muhammad Shahid
+SE,South Eastern,AF11,Ghazni,AF1103,Khwaja Omari
+SE,South Eastern,AF11,Ghazni,AF1104,Waghaz
+SE,South Eastern,AF11,Ghazni,AF1105,Deh Yak
+SE,South Eastern,AF11,Ghazni,AF1106,Jaghatu (Ghazni)
+SE,South Eastern,AF11,Ghazni,AF1107,Andar
+SE,South Eastern,AF11,Ghazni,AF1108,Zanakhan
+SE,South Eastern,AF11,Ghazni,AF1109,Rashidan
+SE,South Eastern,AF11,Ghazni,AF1110,Nawur
+SE,South Eastern,AF11,Ghazni,AF1111,Qarabagh (Ghazni)
+SE,South Eastern,AF11,Ghazni,AF1112,Giro
+SE,South Eastern,AF11,Ghazni,AF1113,Ab Band
+SE,South Eastern,AF11,Ghazni,AF1114,Jaghori
+SE,South Eastern,AF11,Ghazni,AF1115,Muqur (Ghazni)
+SE,South Eastern,AF11,Ghazni,AF1116,Malistan
+SE,South Eastern,AF11,Ghazni,AF1117,Gelan
+SE,South Eastern,AF11,Ghazni,AF1118,Ajristan
+SE,South Eastern,AF11,Ghazni,AF1119,Nawa
+SE,South Eastern,AF12,Paktika,AF1201,Sharan
+SE,South Eastern,AF12,Paktika,AF1202,Mata Khan
+SE,South Eastern,AF12,Paktika,AF1203,Yosuf Khel
+SE,South Eastern,AF12,Paktika,AF1204,Yahya Khel
+SE,South Eastern,AF12,Paktika,AF1205,Sar Rawzah
+SE,South Eastern,AF12,Paktika,AF1206,Omna
+SE,South Eastern,AF12,Paktika,AF1207,Zarghun Shahr
+SE,South Eastern,AF12,Paktika,AF1208,Gomal
+SE,South Eastern,AF12,Paktika,AF1209,Jani Khel
+SE,South Eastern,AF12,Paktika,AF1210,Surobi (Paktika)
+SE,South Eastern,AF12,Paktika,AF1211,Urgun
+SE,South Eastern,AF12,Paktika,AF1212,Ziruk
+SE,South Eastern,AF12,Paktika,AF1213,Nika
+SE,South Eastern,AF12,Paktika,AF1214,Barmal
+SE,South Eastern,AF12,Paktika,AF1215,Giyan
+SE,South Eastern,AF12,Paktika,AF1216,Dila
+SE,South Eastern,AF12,Paktika,AF1217,Wazakhwah
+SE,South Eastern,AF12,Paktika,AF1218,Wormamay
+SE,South Eastern,AF12,Paktika,AF1219,Turwo
+SE,South Eastern,AF13,Paktya,AF1301,Gardez
+SE,South Eastern,AF13,Paktya,AF1302,Ahmadaba
+SE,South Eastern,AF13,Paktya,AF1303,Zurmat
+SE,South Eastern,AF13,Paktya,AF1304,Shawak
+SE,South Eastern,AF13,Paktya,AF1305,Zadran
+SE,South Eastern,AF13,Paktya,AF1306,Sayed Karam
+SE,South Eastern,AF13,Paktya,AF1307,Jaji
+SE,South Eastern,AF13,Paktya,AF1308,Laja Ahmad Khel
+SE,South Eastern,AF13,Paktya,AF1309,Jani Khel (Paktya)
+SE,South Eastern,AF13,Paktya,AF1310,Chamkani
+SE,South Eastern,AF13,Paktya,AF1311,Dand Wa Patan
+SE,South Eastern,AF13,Paktya,AF1312,Laja Mangal
+SE,South Eastern,AF13,Paktya,AF1313,Mirzaka
+SE,South Eastern,AF14,Khost,AF1401,Matun (Khost)
+SE,South Eastern,AF14,Khost,AF1402,Mandozayi
+SE,South Eastern,AF14,Khost,AF1403,Gurbuz
+SE,South Eastern,AF14,Khost,AF1404,Tani
+SE,South Eastern,AF14,Khost,AF1405,Musa Khel
+SE,South Eastern,AF14,Khost,AF1406,Nadir Shah Kot
+SE,South Eastern,AF14,Khost,AF1407,Sabari
+SE,South Eastern,AF14,Khost,AF1408,Terezayi
+SE,South Eastern,AF14,Khost,AF1409,Bak
+SE,South Eastern,AF14,Khost,AF1410,Qalandar
+SE,South Eastern,AF14,Khost,AF1411,Spera
+SE,South Eastern,AF14,Khost,AF1412,Shamul
+SE,South Eastern,AF14,Khost,AF1413,Jaji Maydan
+ER,Eastern,AF15,Kunar,AF1501,Asad Abad
+ER,Eastern,AF15,Kunar,AF1502,Marawara
+ER,Eastern,AF15,Kunar,AF1503,Watapur
+ER,Eastern,AF15,Kunar,AF1504,Narang
+ER,Eastern,AF15,Kunar,AF1505,Sar Kani
+ER,Eastern,AF15,Kunar,AF1506,Shigal
+ER,Eastern,AF15,Kunar,AF1507,Dara-e-Pech
+ER,Eastern,AF15,Kunar,AF1508,Bar Kunar
+ER,Eastern,AF15,Kunar,AF1509,Chawkay
+ER,Eastern,AF15,Kunar,AF1510,Khas Kunar
+ER,Eastern,AF15,Kunar,AF1511,Ghazi Abad
+ER,Eastern,AF15,Kunar,AF1512,Dangam
+ER,Eastern,AF15,Kunar,AF1513,Chapa Dara
+ER,Eastern,AF15,Kunar,AF1514,Nurgal
+ER,Eastern,AF15,Kunar,AF1515,Nari
+ER,Eastern,AF15,Kunar,AF1516,Sheltan
+ER,Eastern,AF16,Nuristan,AF1601,Parun
+ER,Eastern,AF16,Nuristan,AF1602,Waygal
+ER,Eastern,AF16,Nuristan,AF1603,Wama
+ER,Eastern,AF16,Nuristan,AF1604,Nurgaram
+ER,Eastern,AF16,Nuristan,AF1605,Duab
+ER,Eastern,AF16,Nuristan,AF1606,Kamdesh
+ER,Eastern,AF16,Nuristan,AF1607,Mandol
+ER,Eastern,AF16,Nuristan,AF1608,Barg-e-Matal
+NE,North Eastern,AF17,Badakhshan,AF1701,Fayzabad (Badakhshan)
+NE,North Eastern,AF17,Badakhshan,AF1702,Argo
+NE,North Eastern,AF17,Badakhshan,AF1703,Arghanj Khwah
+NE,North Eastern,AF17,Badakhshan,AF1704,Yaftal-e-Sufla
+NE,North Eastern,AF17,Badakhshan,AF1705,Khash
+NE,North Eastern,AF17,Badakhshan,AF1706,Baharak (Badakhshan)
+NE,North Eastern,AF17,Badakhshan,AF1707,Darayem
+NE,North Eastern,AF17,Badakhshan,AF1708,Kohestan (Badakhshan)
+NE,North Eastern,AF17,Badakhshan,AF1709,Yawan
+NE,North Eastern,AF17,Badakhshan,AF1710,Jorm
+NE,North Eastern,AF17,Badakhshan,AF1711,Teshkan
+NE,North Eastern,AF17,Badakhshan,AF1712,Shuhada
+NE,North Eastern,AF17,Badakhshan,AF1713,Shahr-e-Buzurg
+NE,North Eastern,AF17,Badakhshan,AF1714,Raghestan
+NE,North Eastern,AF17,Badakhshan,AF1715,Kishm
+NE,North Eastern,AF17,Badakhshan,AF1716,Warduj
+NE,North Eastern,AF17,Badakhshan,AF1717,Tagab (Badakhshan)
+NE,North Eastern,AF17,Badakhshan,AF1718,Yamgan
+NE,North Eastern,AF17,Badakhshan,AF1719,Shighnan
+NE,North Eastern,AF17,Badakhshan,AF1720,Khwahan
+NE,North Eastern,AF17,Badakhshan,AF1721,Kofab
+NE,North Eastern,AF17,Badakhshan,AF1722,Darwaz-e-Paeen
+NE,North Eastern,AF17,Badakhshan,AF1723,Eshkashem
+NE,North Eastern,AF17,Badakhshan,AF1724,Shaki
+NE,North Eastern,AF17,Badakhshan,AF1725,Zebak
+NE,North Eastern,AF17,Badakhshan,AF1726,Keran Wa Monjan
+NE,North Eastern,AF17,Badakhshan,AF1727,Darwaz-e-Balla
+NE,North Eastern,AF17,Badakhshan,AF1728,Wakhan
+NE,North Eastern,AF18,Takhar,AF1801,Taloqan
+NE,North Eastern,AF18,Takhar,AF1802,Hazar Sumuch
+NE,North Eastern,AF18,Takhar,AF1803,Baharak (Takhar)
+NE,North Eastern,AF18,Takhar,AF1804,Bangi
+NE,North Eastern,AF18,Takhar,AF1805,Chal
+NE,North Eastern,AF18,Takhar,AF1806,Namak Ab
+NE,North Eastern,AF18,Takhar,AF1807,Kalafgan
+NE,North Eastern,AF18,Takhar,AF1808,Farkhar
+NE,North Eastern,AF18,Takhar,AF1809,Khwaja Ghar
+NE,North Eastern,AF18,Takhar,AF1810,Rostaq
+NE,North Eastern,AF18,Takhar,AF1811,Eshkamesh
+NE,North Eastern,AF18,Takhar,AF1812,Dasht-e-Qala
+NE,North Eastern,AF18,Takhar,AF1813,Warsaj
+NE,North Eastern,AF18,Takhar,AF1814,Khwaja Bahawuddin
+NE,North Eastern,AF18,Takhar,AF1815,Darqad
+NE,North Eastern,AF18,Takhar,AF1816,Chahab
+NE,North Eastern,AF18,Takhar,AF1817,Yangi Qala
+NE,North Eastern,AF19,Kunduz,AF1901,Kunduz
+NE,North Eastern,AF19,Kunduz,AF1902,Chahar Darah
+NE,North Eastern,AF19,Kunduz,AF1903,Ali Abad
+NE,North Eastern,AF19,Kunduz,AF1904,Khan Abad
+NE,North Eastern,AF19,Kunduz,AF1905,Imam Sahib
+NE,North Eastern,AF19,Kunduz,AF1906,Dasht-e-Archi
+NE,North Eastern,AF19,Kunduz,AF1907,Qala-e-Zal
+NE,North Eastern,AF19,Kunduz,AF1908,Kalbad
+NE,North Eastern,AF19,Kunduz,AF1909,Gul Tepa
+NE,North Eastern,AF19,Kunduz,AF1910,Aqtash
+NR,Northern,AF20,Samangan,AF2001,Aybak
+NR,Northern,AF20,Samangan,AF2002,Hazrat-e-Sultan
+NR,Northern,AF20,Samangan,AF2003,Khuram Wa Sarbagh
+NR,Northern,AF20,Samangan,AF2004,Feroz Nakhchir
+NR,Northern,AF20,Samangan,AF2005,Ruy-e-Duab
+NR,Northern,AF20,Samangan,AF2006,Dara-e-Suf Payin
+NR,Northern,AF20,Samangan,AF2007,Dara-e-Suf Bala
+NR,Northern,AF21,Balkh,AF2101,Mazar-e-Sharif
+NR,Northern,AF21,Balkh,AF2102,Nahr-e-Shahi
+NR,Northern,AF21,Balkh,AF2103,Dehdadi
+NR,Northern,AF21,Balkh,AF2104,Charkent
+NR,Northern,AF21,Balkh,AF2105,Marmul
+NR,Northern,AF21,Balkh,AF2106,Balkh
+NR,Northern,AF21,Balkh,AF2107,Sholgareh
+NR,Northern,AF21,Balkh,AF2108,Chemtal
+NR,Northern,AF21,Balkh,AF2109,Dawlatabad (Balkh)
+NR,Northern,AF21,Balkh,AF2110,Khulm
+NR,Northern,AF21,Balkh,AF2111,Char Bolak
+NR,Northern,AF21,Balkh,AF2112,Shortepa
+NR,Northern,AF21,Balkh,AF2113,Kaldar
+NR,Northern,AF21,Balkh,AF2114,Keshendeh
+NR,Northern,AF21,Balkh,AF2115,Zari
+NR,Northern,AF21,Balkh,AF2116,Sharak-e-Hayratan
+NR,Northern,AF22,Sar-e-Pul,AF2201,Sar-e-Pul
+NR,Northern,AF22,Sar-e-Pul,AF2202,Sayad
+NR,Northern,AF22,Sar-e-Pul,AF2203,Kohestanat
+NR,Northern,AF22,Sar-e-Pul,AF2204,Sozmaqala
+NR,Northern,AF22,Sar-e-Pul,AF2205,Sancharak
+NR,Northern,AF22,Sar-e-Pul,AF2206,Gosfandi
+NR,Northern,AF22,Sar-e-Pul,AF2207,Balkhab
+WR,Western,AF23,Ghor,AF2301,Feroz Koh
+WR,Western,AF23,Ghor,AF2302,Do Layna
+WR,Western,AF23,Ghor,AF2303,Dawlatyar
+WR,Western,AF23,Ghor,AF2304,Charsadra
+WR,Western,AF23,Ghor,AF2305,Pasaband
+WR,Western,AF23,Ghor,AF2306,Shahrak
+WR,Western,AF23,Ghor,AF2307,Lal Wa Sarjangal
+WR,Western,AF23,Ghor,AF2308,Taywarah
+WR,Western,AF23,Ghor,AF2309,Tolak
+WR,Western,AF23,Ghor,AF2310,Saghar
+CH,Central Highland,AF24,Daykundi,AF2401,Nili
+CH,Central Highland,AF24,Daykundi,AF2402,Shahrestan
+CH,Central Highland,AF24,Daykundi,AF2403,Ashtarlay
+CH,Central Highland,AF24,Daykundi,AF2404,Khedir
+CH,Central Highland,AF24,Daykundi,AF2405,Kiti
+CH,Central Highland,AF24,Daykundi,AF2406,Miramor
+CH,Central Highland,AF24,Daykundi,AF2407,Sang-e-Takht
+CH,Central Highland,AF24,Daykundi,AF2408,Kajran
+CH,Central Highland,AF24,Daykundi,AF2409,Patoo
+SR,Southern,AF25,Uruzgan,AF2501,Tirinkot
+SR,Southern,AF25,Uruzgan,AF2502,Dehraoud
+SR,Southern,AF25,Uruzgan,AF2503,Chora
+SR,Southern,AF25,Uruzgan,AF2504,Shahid-e-Hassas
+SR,Southern,AF25,Uruzgan,AF2505,Khas Uruzgan
+SR,Southern,AF25,Uruzgan,AF2506,Chinarto
+SR,Southern,AF25,Uruzgan,AF2507,Gizab
+SR,Southern,AF26,Zabul,AF2601,Qalat
+SR,Southern,AF26,Zabul,AF2602,Tarnak Wa Jaldak
+SR,Southern,AF26,Zabul,AF2603,Shinkay
+SR,Southern,AF26,Zabul,AF2604,Mizan
+SR,Southern,AF26,Zabul,AF2605,Arghandab (Zabul)
+SR,Southern,AF26,Zabul,AF2606,Shah Joi
+SR,Southern,AF26,Zabul,AF2607,Daychopan
+SR,Southern,AF26,Zabul,AF2608,Atghar
+SR,Southern,AF26,Zabul,AF2609,Nawbahar
+SR,Southern,AF26,Zabul,AF2610,Shamul Zai
+SR,Southern,AF26,Zabul,AF2611,Kakar
+SR,Southern,AF27,Kandahar,AF2701,Kandahar
+SR,Southern,AF27,Kandahar,AF2702,Arghandab
+SR,Southern,AF27,Kandahar,AF2703,Daman
+SR,Southern,AF27,Kandahar,AF2704,Panjwayee
+SR,Southern,AF27,Kandahar,AF2705,Zheray
+SR,Southern,AF27,Kandahar,AF2706,Shah Wali Kot
+SR,Southern,AF27,Kandahar,AF2707,Khakrez
+SR,Southern,AF27,Kandahar,AF2708,Arghestan
+SR,Southern,AF27,Kandahar,AF2709,Ghorak
+SR,Southern,AF27,Kandahar,AF2710,Maiwand
+SR,Southern,AF27,Kandahar,AF2711,Spin Boldak
+SR,Southern,AF27,Kandahar,AF2712,Nesh
+SR,Southern,AF27,Kandahar,AF2713,Miyanshin
+SR,Southern,AF27,Kandahar,AF2714,Shorabak
+SR,Southern,AF27,Kandahar,AF2715,Maruf
+SR,Southern,AF27,Kandahar,AF2716,Reg
+SR,Southern,AF27,Kandahar,AF2717,Dand
+SR,Southern,AF27,Kandahar,AF2718,Takhta Pul
+NR,Northern,AF28,Jawzjan,AF2801,Shiberghan
+NR,Northern,AF28,Jawzjan,AF2802,Khwaja Dukoh
+NR,Northern,AF28,Jawzjan,AF2803,Khanaqa
+NR,Northern,AF28,Jawzjan,AF2804,Mingajik
+NR,Northern,AF28,Jawzjan,AF2805,Qush Tepa
+NR,Northern,AF28,Jawzjan,AF2806,Khamyab
+NR,Northern,AF28,Jawzjan,AF2807,Aqcha
+NR,Northern,AF28,Jawzjan,AF2808,Fayzabad (Jawzjan)
+NR,Northern,AF28,Jawzjan,AF2809,Mardyan
+NR,Northern,AF28,Jawzjan,AF2810,Qarqin
+NR,Northern,AF28,Jawzjan,AF2811,Darzab
+NR,Northern,AF29,Faryab,AF2901,Maymana
+NR,Northern,AF29,Faryab,AF2902,Pashtun Kot
+NR,Northern,AF29,Faryab,AF2903,Khwaja Sabz Posh
+NR,Northern,AF29,Faryab,AF2904,Almar
+NR,Northern,AF29,Faryab,AF2905,Bilcheragh
+NR,Northern,AF29,Faryab,AF2906,Shirin Tagab
+NR,Northern,AF29,Faryab,AF2907,Qaysar
+NR,Northern,AF29,Faryab,AF2908,Gurzewan
+NR,Northern,AF29,Faryab,AF2909,Dawlat Abad (Faryab)
+NR,Northern,AF29,Faryab,AF2910,Kohistan (Faryab)
+NR,Northern,AF29,Faryab,AF2911,Qaram Qul
+NR,Northern,AF29,Faryab,AF2912,Qurghan
+NR,Northern,AF29,Faryab,AF2913,Andkhoy
+NR,Northern,AF29,Faryab,AF2914,Khan-e-Char Bagh
+SR,Southern,AF30,Helmand,AF3001,Lashkargah
+SR,Southern,AF30,Helmand,AF3002,Nad-e-Ali
+SR,Southern,AF30,Helmand,AF3003,Nawa-e-Barakzaiy
+SR,Southern,AF30,Helmand,AF3004,Nahr-e-Saraj
+SR,Southern,AF30,Helmand,AF3005,Washer
+SR,Southern,AF30,Helmand,AF3006,Garmser
+SR,Southern,AF30,Helmand,AF3007,Nawzad
+SR,Southern,AF30,Helmand,AF3008,Sangin
+SR,Southern,AF30,Helmand,AF3009,Musa Qala
+SR,Southern,AF30,Helmand,AF3010,Kajaki
+SR,Southern,AF30,Helmand,AF3011,Reg-e-Khan Nishin
+SR,Southern,AF30,Helmand,AF3012,Baghran
+SR,Southern,AF30,Helmand,AF3013,Deh-e-Shu
+SR,Southern,AF30,Helmand,AF3014,Marja
+SR,Southern,AF30,Helmand,AF3015,Nawa-i-Mesh
+WR,Western,AF31,Badghis,AF3101,Qala-e-Naw
+WR,Western,AF31,Badghis,AF3102,Ab Kamari
+WR,Western,AF31,Badghis,AF3103,Muqur (Badghis)
+WR,Western,AF31,Badghis,AF3104,Qadis
+WR,Western,AF31,Badghis,AF3105,Bala Murghab
+WR,Western,AF31,Badghis,AF3106,Jawand
+WR,Western,AF31,Badghis,AF3107,Ghormach
+WR,Western,AF32,Herat,AF3201,Herat
+WR,Western,AF32,Herat,AF3202,Injil
+WR,Western,AF32,Herat,AF3203,Guzara
+WR,Western,AF32,Herat,AF3204,Karukh
+WR,Western,AF32,Herat,AF3205,Zindajan
+WR,Western,AF32,Herat,AF3206,Pashtun Zarghun
+WR,Western,AF32,Herat,AF3207,Kushk
+WR,Western,AF32,Herat,AF3208,Gulran
+WR,Western,AF32,Herat,AF3209,Adraskan
+WR,Western,AF32,Herat,AF3210,Kushk-e-Kuhna
+WR,Western,AF32,Herat,AF3211,Ghoryan
+WR,Western,AF32,Herat,AF3212,Obe
+WR,Western,AF32,Herat,AF3213,Kohsan
+WR,Western,AF32,Herat,AF3214,Shindand
+WR,Western,AF32,Herat,AF3215,Farsi
+WR,Western,AF32,Herat,AF3216,Chisht-e-Sharif
+WR,Western,AF32,Herat,AF3217,Zer-i-Koh
+WR,Western,AF32,Herat,AF3218,Pusht-i-Koh
+WR,Western,AF32,Herat,AF3219,Koh-i-Zor
+WR,Western,AF32,Herat,AF3220,Zawol
+WR,Western,AF33,Farah,AF3301,Farah
+WR,Western,AF33,Farah,AF3302,Pushtrod
+WR,Western,AF33,Farah,AF3303,Khak-e-Safed
+WR,Western,AF33,Farah,AF3304,Qala-e-Kah
+WR,Western,AF33,Farah,AF3305,Shibkoh
+WR,Western,AF33,Farah,AF3306,Bala Buluk
+WR,Western,AF33,Farah,AF3307,Anar Dara
+WR,Western,AF33,Farah,AF3308,Bakwa
+WR,Western,AF33,Farah,AF3309,Lash-e-Juwayn
+WR,Western,AF33,Farah,AF3310,Gulistan
+WR,Western,AF33,Farah,AF3311,Pur Chaman
+SR,Southern,AF34,Nimroz,AF3401,Zaranj
+SR,Southern,AF34,Nimroz,AF3402,Kang
+SR,Southern,AF34,Nimroz,AF3403,Chakhansur
+SR,Southern,AF34,Nimroz,AF3404,Char Burjak
+SR,Southern,AF34,Nimroz,AF3405,Khashrod
+SR,Southern,AF34,Nimroz,AF3406,Dilaram
